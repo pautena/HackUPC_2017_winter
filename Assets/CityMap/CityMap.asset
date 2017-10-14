@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Name: CityMap
   m_EditorClassIdentifier: 
   Factories:
-  - {fileID: 11400000, guid: 9a5cde2598a3d4f7990e77a8a1ec444c, type: 2}
   - {fileID: 11400000, guid: 2835fe8d860c844ec86473d1be298053, type: 2}
   - {fileID: 11400000, guid: 7d5f8c448b1e74aee81bcbaa2b1fe982, type: 2}
   - {fileID: 11400000, guid: 2515aa88775634d7193579801683cf4d, type: 2}

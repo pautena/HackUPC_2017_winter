@@ -498,15 +498,10 @@ Prefab:
     - target: {fileID: 224722373345122500, guid: 3c2047a0c42f743a1a4c42755a5f7f27,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 70
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1895840001373800, guid: 3c2047a0c42f743a1a4c42755a5f7f27, type: 2}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 136025356120817244, guid: 3c2047a0c42f743a1a4c42755a5f7f27,
-        type: 2}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
