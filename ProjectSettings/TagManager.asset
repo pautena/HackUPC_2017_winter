@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Water
+  - NetworkManager
   layers:
   - Default
   - TransparentFX
