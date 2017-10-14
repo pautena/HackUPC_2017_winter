@@ -47,11 +47,17 @@ public class DragonNetwork : NetworkBehaviour {
 		
 	public void SyncTeam(int team){
 		this.team = team;
+		SetName (team);
 		SetMaterial (team);
 	}
 
 	private void SetTeam(int team){
+		SetName (team);
 		SetMaterial (team);
+	}
+
+	private void SetName(int team){
+		gameObject.name = "Player_team" + team;
 	}
 	private void SetMaterial(int team){
 		MyNetworkManager networkManager = GameObject.FindGameObjectWithTag ("NetworkManager")

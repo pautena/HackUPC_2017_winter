@@ -61,7 +61,6 @@ public class DragonHealth : NetworkBehaviour {
 		health = newHealth;
 		CheckDie ();
 		UpdateUI();
-		Debug.Log ("hook health. newHealth: " + newHealth);
 	}
 
 	private void UpdateUI(){
@@ -69,17 +68,14 @@ public class DragonHealth : NetworkBehaviour {
 	}
 
 	public void Die(){
-		animator.SetTrigger ("Death");
 		//TODO: respawn
 	}
 
 	void OnTriggerEnter(Collider other) {
-		Debug.Log ("OnTriggerEnter: " + other);
 		int layer = other.gameObject.layer;
 
 		if (LayerMask.LayerToName(layer)== "Damage") {
 			Fireball fireball = other.gameObject.GetComponent<Fireball> ();
-			Debug.Log ("OnTriggerEnter: " + other);
 
 			if (fireball != null) {
 				TakeDamage (fireball.Force);

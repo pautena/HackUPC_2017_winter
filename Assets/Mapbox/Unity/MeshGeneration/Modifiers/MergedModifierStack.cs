@@ -60,7 +60,6 @@ namespace Mapbox.Unity.MeshGeneration.Modifiers
 
         private GameObject CreateGameObject(MeshData data, UnityTile tile, GameObject main)
         {
-			Debug.Log (data.Triangles.Count);
             var go = new GameObject();
             var mesh = go.AddComponent<MeshFilter>().mesh;
             mesh.subMeshCount = data.Triangles.Count;
