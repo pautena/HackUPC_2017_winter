@@ -10,11 +10,16 @@ public class DragonHealth : NetworkBehaviour {
 
 	[SyncVar(hook="HookHealth")]
 	public float health;
-	public Slider healthSlider;
 
-	// Use this for initialization
-	void Awake () {
+	public Slider healthSlider;
+	public float explosionStrength = 100f;
+
+	public Animator animator;
+	public Rigidbody rb;
+
+	void Start(){
 		health = startHealth;
+		UpdateUI ();
 	}
 	
 	// Update is called once per frame
@@ -26,15 +31,37 @@ public class DragonHealth : NetworkBehaviour {
 		health -= damage;
 
 
+
+		var died = CheckDie ();
+
+		if (!died) {
+			DamageAnimation ();
+		}
+		UpdateUI ();
+		Debug.Log ("take damage. health: " + health + ", damage: " + damage);
+	}
+
+	private void DamageAnimation(){
+		animator.SetBool ("Damaged",true);
+
+		Vector3 forceVec = rb.velocity.normalized * explosionStrength;
+		rb.AddForce(forceVec,ForceMode.Acceleration);
+	}
+
+	private bool CheckDie(){
 		if (health < 0) {
 			health = 0.0f;
 			Die ();
+			return true;
 		}
-		UpdateUI ();
+		return false;
 	}
 
 	private void HookHealth(float newHealth){
+		health = newHealth;
+		CheckDie ();
 		UpdateUI();
+		Debug.Log ("hook health. newHealth: " + newHealth);
 	}
 
 	private void UpdateUI(){
@@ -42,15 +69,21 @@ public class DragonHealth : NetworkBehaviour {
 	}
 
 	public void Die(){
-		//TODO
+		animator.SetTrigger ("Death");
+		//TODO: respawn
 	}
 
 	void OnTriggerEnter(Collider other) {
 		Debug.Log ("OnTriggerEnter: " + other);
-		Fireball fireball = other.gameObject.GetComponent<Fireball> ();
+		int layer = other.gameObject.layer;
 
-		if (fireball != null) {
-			TakeDamage (fireball.Force);
+		if (LayerMask.LayerToName(layer)== "Damage") {
+			Fireball fireball = other.gameObject.GetComponent<Fireball> ();
+			Debug.Log ("OnTriggerEnter: " + other);
+
+			if (fireball != null) {
+				TakeDamage (fireball.Force);
+			}
 		}
 	}
 }

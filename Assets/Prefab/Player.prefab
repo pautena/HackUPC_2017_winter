@@ -1494,13 +1494,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1196287157494952}
-  m_LocalRotation: {x: 0.12607859, y: -0.2566048, z: 0.03378265, w: 0.9576622}
-  m_LocalPosition: {x: 0.94, y: 1.17, z: -1.93}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0.89, z: -1.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4880688207011270}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 15, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!4 &4786564951416512
 Transform:
   m_ObjectHideFlags: 1
@@ -1839,7 +1839,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 100
+  health: 0
   healthSlider: {fileID: 114198093890812412}
+  explosionStrength: 1000
+  animator: {fileID: 95316930647811910}
+  rb: {fileID: 54955803567061044}
 --- !u!114 &114198093890812412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1960,6 +1964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragonController: {fileID: 114962558400577842}
   dragoFire: {fileID: 114367091880829062}
+  healthCollider: {fileID: 136440493468668012}
   camera: {fileID: 20428574085441354}
   renderer: {fileID: 137756726833040762}
   team: -1
@@ -2053,7 +2058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3168104, g: 0.75, b: 0.28125, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2565,7 +2570,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1812970205260194}
-  m_LocalRotation: {x: 0, y: -0.258819, z: 0, w: 0.9659259}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 12, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
@@ -2574,7 +2579,7 @@ RectTransform:
   - {fileID: 224768354423204918}
   m_Father: {fileID: 224791074508913752}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 12}

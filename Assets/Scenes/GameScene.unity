@@ -429,8 +429,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1895840001373800, guid: 3c2047a0c42f743a1a4c42755a5f7f27, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114089923568567336, guid: 3c2047a0c42f743a1a4c42755a5f7f27,
+        type: 2}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1927734056}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c2047a0c42f743a1a4c42755a5f7f27, type: 2}
   m_IsPrefabParent: 0
@@ -637,7 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initializeOnStart: 1
-  _latitudeLongitudeString: 41.388670, 2.112165
+  _latitudeLongitudeString: 41.388681, 2.112542
   _zoom: 16
   _root: {fileID: 855679940}
   _tileProvider: {fileID: 855679938}
@@ -752,3 +757,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1927734056 stripped
+Rigidbody:
+  m_PrefabParentObject: {fileID: 54955803567061044, guid: 3c2047a0c42f743a1a4c42755a5f7f27,
+    type: 2}
+  m_PrefabInternal: {fileID: 473414923}

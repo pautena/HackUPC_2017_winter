@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 public class DragonNetwork : NetworkBehaviour {
 	public DragonController dragonController;
 	public DragoFire dragoFire;
+	public CapsuleCollider healthCollider;
 	public Camera camera;
 	public SkinnedMeshRenderer renderer;
 
@@ -34,12 +35,14 @@ public class DragonNetwork : NetworkBehaviour {
 		dragonController.enabled = false;
 		dragoFire.enabled = false;
 		camera.gameObject.SetActive(false);
+		healthCollider.enabled = false;
 	}
 
 	private void Enable(){
 		dragonController.enabled = true;
 		dragoFire.enabled = true;
 		camera.gameObject.SetActive(true);
+		healthCollider.enabled = true;
 	}
 		
 	public void SyncTeam(int team){

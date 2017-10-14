@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4117974776667114}
   - component: {fileID: 198674315430584304}
   - component: {fileID: 199420309521319590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 108413735267576282}
   - component: {fileID: 114521790436433952}
   - component: {fileID: 114292505609348772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MyFireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

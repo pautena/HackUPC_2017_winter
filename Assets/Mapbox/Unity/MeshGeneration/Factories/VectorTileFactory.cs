@@ -131,15 +131,12 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 			// and we should not wait for it here!
 			foreach (var layerName in _cachedData[tile].Data.LayerNames())
 			{
-				Debug.Log ("layerName: " + layerName);
 				if (_layerBuilder.ContainsKey(layerName))
 				{
 					foreach (var builder in _layerBuilder[layerName])
 					{
 						if (builder.Active)
 						{
-							Debug.Log ("create. builder: "+builder);
-							Debug.Log ("tile: "+tile);
 							builder.Create(_cachedData[tile].Data.GetLayer(layerName), tile);
 						}
 					}
