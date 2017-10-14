@@ -122,6 +122,7 @@
 					{
 						if (builder.Active)
 						{
+							Debug.Log (_cachedData [tile].Data.GetLayer (layerName));
 							builder.Create(_cachedData[tile].Data.GetLayer(layerName), tile);
 						}
 					}

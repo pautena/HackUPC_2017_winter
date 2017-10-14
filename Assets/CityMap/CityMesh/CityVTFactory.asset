@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ac2e2ad924624adea7870a5f04450a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 63d97cb1cfb3f1b499c24763afa54873, type: 3}
   m_Name: CityVTFactory
   m_EditorClassIdentifier: 
   _mapId: mapbox.mapbox-streets-v7

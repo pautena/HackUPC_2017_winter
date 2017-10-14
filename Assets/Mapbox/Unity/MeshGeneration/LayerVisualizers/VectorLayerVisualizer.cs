@@ -63,6 +63,7 @@ namespace Mapbox.Unity.MeshGeneration.Interfaces
 			_container = new GameObject(Key + " Container");
 			_container.transform.SetParent(tile.transform, false);
 
+
 			//testing each feature with filters
 			var fc = layer.FeatureCount();
 			var filterOut = false;
