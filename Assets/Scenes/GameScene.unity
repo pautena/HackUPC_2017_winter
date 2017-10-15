@@ -1066,8 +1066,13 @@ Prefab:
     - target: {fileID: 224393005331991300, guid: 655ecb20ccf914070bb5bce8e5a19255,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: 3784.8123
+      value: 3784.8135
       objectReference: {fileID: 0}
+    - target: {fileID: 114223783785452268, guid: 655ecb20ccf914070bb5bce8e5a19255,
+        type: 2}
+      propertyPath: textUI
+      value: 
+      objectReference: {fileID: 941683821}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 655ecb20ccf914070bb5bce8e5a19255, type: 2}
   m_IsPrefabParent: 0
@@ -2314,7 +2319,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Team 1
+  m_Text: 'Team '
 --- !u!222 &1698636149
 CanvasRenderer:
   m_ObjectHideFlags: 0

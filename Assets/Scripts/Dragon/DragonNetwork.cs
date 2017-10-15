@@ -11,14 +11,13 @@ public class DragonNetwork : NetworkBehaviour {
 	public Camera camera;
 	public SkinnedMeshRenderer renderer;
 	public Slider healthSlider;
-	private Text teamNameUI;
 
 	[SyncVar(hook="SetTeam")]
 	public int team=-1;
 
 	// Use this for initialization
 	void Start () {
-		teamNameUI = GameObject.FindGameObjectWithTag ("TeamNameUI").GetComponent<Text>();
+		
 
 		if (team != -1) {
 			SetMaterial (team);
@@ -65,9 +64,18 @@ public class DragonNetwork : NetworkBehaviour {
 		SetMaterial (team);
 	}
 
-	private void SetName(int team){
-		teamNameUI.text = "Team " + team;
+	private void SetName(int team){		
 		gameObject.name = "Player_team" + team;
+		Invoke ("SetUITeamName", 2);
+
+
+	}
+
+	private void SetUITeamName(){
+		if (isLocalPlayer) {
+			Text teamNameUI = GameObject.FindGameObjectWithTag ("TeamNameUI").GetComponent<Text> ();
+			teamNameUI.text = "Team " + team;
+		}
 	}
 	private void SetMaterial(int team){
 		MyNetworkManager networkManager = GameObject.FindGameObjectWithTag ("NetworkManager")
