@@ -28,7 +28,7 @@ public class MatchMaker : NetworkBehaviour {
 
 	public void OnMatchList(bool success, string extendedInfo, List<MatchInfoSnapshot> matches)
 	{
-		Debug.Log ("success: " + success + ", matches: " + matches);
+		Debug.Log ("success: " + success + ", matches: " + matches.Count);
 		Debug.Log ("extendedInfo: " + extendedInfo);
 		if (success && matches.Count > 0) {
 			JoinGame (matches [0].networkId);
@@ -43,6 +43,7 @@ public class MatchMaker : NetworkBehaviour {
 	}
 
 	private void JoinGame(NetworkID networkId){
+		Debug.Log ("Joint to " + networkId);
 		networkManager.matchMaker.JoinMatch(networkId, "" , "", "", 0, 0, networkManager.OnMatchJoined);
 	}
 
