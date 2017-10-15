@@ -17,7 +17,11 @@ public class MatchMaker : NetworkBehaviour {
 
 	public void Connect(){
 		networkManager.StartMatchMaker ();
-		var matches = networkManager.matchMaker.ListMatches (0, 10, "", true, 0, 0, OnMatchList);
+
+		string matchName = networkManager.matchName;
+		Debug.Log ("ListMatches -> matchName: " + matchName);
+
+		var matches = networkManager.matchMaker.ListMatches (0, 10, matchName, true, 0, 0, OnMatchList);
 		Debug.Log ("matches: " + matches);
 	}
 	
@@ -30,6 +34,9 @@ public class MatchMaker : NetworkBehaviour {
 	{
 		Debug.Log ("success: " + success + ", matches: " + matches.Count);
 		Debug.Log ("extendedInfo: " + extendedInfo);
+		foreach (MatchInfoSnapshot match in matches) {
+			Debug.Log (match.name);
+		}
 		if (success && matches.Count > 0) {
 			JoinGame (matches [0].networkId);
 		} else if (success) {
@@ -38,7 +45,9 @@ public class MatchMaker : NetworkBehaviour {
 	}
 
 	private void CreateGame(){
-		networkManager.matchMaker.CreateMatch(networkManager.matchName,
+		string matchName = networkManager.matchName;
+		Debug.Log ("CreateGame -> matchName: " + matchName);
+		networkManager.matchMaker.CreateMatch(matchName,
 			maximumMatchSize, true, "", "", "", 0, 0, networkManager.OnMatchCreate);
 	}
 
