@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 114746131042338172}
   - component: {fileID: 114962558400577842}
   - component: {fileID: 114484121744386454}
-  - component: {fileID: 114367091880829062}
+  - component: {fileID: 114429553198030846}
   - component: {fileID: 114643173760626100}
   - component: {fileID: 114934167329755036}
   - component: {fileID: 114493133864868402}
@@ -1930,27 +1930,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114367091880829062
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1895840001373800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e889cf9faf0e646a645c31d629350b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FireBallSpeed: 200
-  FirePoint: {fileID: 4659470118933608}
-  FireBall: {fileID: 1947450215073748, guid: 483d77a499fe94054aa575c7c6d3974e, type: 2}
-  FireBreath: {fileID: 1287803501734468, guid: 73c482a9c73644c73a6423a9d1c7b897, type: 2}
-  aimMode: 1
-  maxAngle: 110
-  Bones:
-  - {fileID: 4483538848970034}
-  - {fileID: 4613080700225670}
-  Smoothness: 5
 --- !u!114 &114417070781900480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1963,12 +1942,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragonController: {fileID: 114962558400577842}
-  dragoFire: {fileID: 114367091880829062}
+  dragoFire: {fileID: 114429553198030846}
   healthCollider: {fileID: 136440493468668012}
   camera: {fileID: 20428574085441354}
   renderer: {fileID: 137756726833040762}
   healthSlider: {fileID: 114198093890812412}
   team: -1
+--- !u!114 &114429553198030846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1895840001373800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4c26e637357143b981be9db2bd38432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireBallSpeed: 500
+  FirePoint: {fileID: 4659470118933608}
+  FireBall: {fileID: 1947450215073748, guid: 483d77a499fe94054aa575c7c6d3974e, type: 2}
+  FireBreath: {fileID: 1287803501734468, guid: 73c482a9c73644c73a6423a9d1c7b897, type: 2}
+  aimMode: 0
+  maxAngle: 110
+  Bones: []
+  Smoothness: 5
 --- !u!114 &114484121744386454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2323,10 +2321,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.3
+  m_Radius: 0.6
+  m_Height: 0.6
   m_Direction: 2
-  m_Center: {x: 0, y: 0.23, z: -0.1}
+  m_Center: {x: 0, y: 0.5, z: -0.3}
 --- !u!137 &137756726833040762
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

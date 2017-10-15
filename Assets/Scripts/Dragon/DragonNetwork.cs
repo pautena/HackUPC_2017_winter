@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DragonNetwork : NetworkBehaviour {
 	public DragonController dragonController;
-	public DragoFire dragoFire;
+	public MyDragoFire dragoFire;
 	public CapsuleCollider healthCollider;
 	public Camera camera;
 	public SkinnedMeshRenderer renderer;
