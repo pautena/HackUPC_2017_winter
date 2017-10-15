@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Linq;
+using UnityEngine.UI;
+using System;
 
 public class PoiManager : NetworkBehaviour {
 
 	public Material defaultWallMaterial;
 	public Material[] wallMaterials;
 
+	public Text[] pointsUI;
+
 	public Material defaultPoiMaterial;
 	public Material[] poiMaterials;
 
 	public MeshRenderer wall;
 	public MeshRenderer poi;
-	public int[] teamPoints;
+	private int[] teamPoints;
 	public CapsuleCollider wallCollider;
 	private MyNetworkManager networkManager;
 
@@ -56,7 +60,7 @@ public class PoiManager : NetworkBehaviour {
 			if(distance< minDistance){
 				DragonNetwork dragonNetwork = player.GetComponent<DragonNetwork> ();
 				int team = dragonNetwork.team;
-				teamPoints [team+1]++;
+				teamPoints [team-1]++;
 			}
 		}
 	}
@@ -66,7 +70,6 @@ public class PoiManager : NetworkBehaviour {
 
 		for (int team=0; team<teamPoints.Length;++team){
 			int points = teamPoints [team];
-			Debug.Log ("team: " + team + ", points: " + points);
 			if (points > 0 && bestTeam == -1) {
 				bestTeam = team;
 			}else if (points > 0 && points > teamPoints [bestTeam]) {
@@ -74,15 +77,15 @@ public class PoiManager : NetworkBehaviour {
 			}
 
 		}
-		return bestTeam+1;
+		return bestTeam;
 	}
 
 	private void  UpdateColor(){
-		int bestTeam = GetBeastTeam () -1;
+		int bestTeam = GetBeastTeam ();
 
 		Material poiMaterial;
 		Material wallMaterial;
-		if (bestTeam > 0) {
+		if (bestTeam >-1) {
 			poiMaterial = poiMaterials [bestTeam];
 			wallMaterial = wallMaterials [bestTeam];
 		} else {
@@ -97,7 +100,6 @@ public class PoiManager : NetworkBehaviour {
 	void OnTriggerEnter(Collider collider){
 		if (collider.gameObject.tag == "Player") {
 			int team = GetTeam (collider);
-			Debug.Log ("PoiManager. OnTriggerEnter. collider: " + collider+", team: "+team);
 			CalculatePoints ();
 			UpdateColor ();
 		}
@@ -106,7 +108,6 @@ public class PoiManager : NetworkBehaviour {
 	void OnTriggerExit(Collider collider){
 		if (collider.gameObject.tag == "Player") {
 			int team = GetTeam (collider);
-			Debug.Log ("PoiManager. OnTriggerExit. collider: " + collider+", team: "+team);
 			Invoke ("OnTriggerExitDelayed", 2);
 		}
 	}
@@ -114,5 +115,32 @@ public class PoiManager : NetworkBehaviour {
 	private void OnTriggerExitDelayed(){
 		CalculatePoints ();
 		UpdateColor ();
+	}
+
+	public void DealPoints(){
+		int team = GetBeastTeam ()+1;
+
+		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
+		Vector3 wallColliderPosition = new Vector3 (wallCollider.transform.position.x, 0f, wallCollider.transform.position.z);
+
+		foreach (GameObject player in players) {
+			Vector3 playerPosition = new Vector3 (player.transform.position.x, 0f, player.transform.position.z);
+			DragonNetwork dragonNetwork = player.GetComponent<DragonNetwork> ();
+
+			float distance = Vector3.Distance (wallColliderPosition, playerPosition);
+			float minDistance = Mathf.Sqrt (Mathf.Pow(wallCollider.bounds.extents.x,2) + Mathf.Pow(wallCollider.bounds.extents.z,2));
+
+			if(distance< minDistance && team == dragonNetwork.team){
+				IncreasePoints (team, dragonNetwork);
+			}
+		}
+	}
+
+	private void IncreasePoints(int team,DragonNetwork dragonNetwork){
+		string text = pointsUI [team - 1].text;
+		int points = Int32.Parse (text);
+		points++;
+		pointsUI [team - 1].text = points.ToString ();
+
 	}
 }

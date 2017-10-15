@@ -17,7 +17,10 @@ public class DragonHealth : NetworkBehaviour {
 	public Animator animator;
 	public Rigidbody rb;
 
+	private Slider healthUISlider;
+
 	void Start(){
+		healthUISlider = GameObject.FindGameObjectWithTag ("HealthSlider").GetComponent<Slider> ();
 		health = startHealth;
 		UpdateUI ();
 	}
@@ -64,7 +67,11 @@ public class DragonHealth : NetworkBehaviour {
 	}
 
 	private void UpdateUI(){
-		healthSlider.value = health / startHealth;
+		float value = health / startHealth;
+		healthSlider.value = value;
+		if (isLocalPlayer) {
+			healthUISlider.value = value;
+		}
 	}
 
 	public void Die(){

@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 224999298774408240}
   - component: {fileID: 114198093890812412}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: pHealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1495,7 +1495,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1196287157494952}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0.89, z: -1.58}
+  m_LocalPosition: {x: 0.16, y: 1.28, z: -2.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4880688207011270}
@@ -1967,6 +1967,7 @@ MonoBehaviour:
   healthCollider: {fileID: 136440493468668012}
   camera: {fileID: 20428574085441354}
   renderer: {fileID: 137756726833040762}
+  healthSlider: {fileID: 114198093890812412}
   team: -1
 --- !u!114 &114484121744386454
 MonoBehaviour:

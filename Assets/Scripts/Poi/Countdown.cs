@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class Countdown : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class Countdown : MonoBehaviour {
 	public float iterationSeconds=30f;
 	public float rotationVelocity=6f;
 	private float time;
+	public PoiManager poiManager;
+	public Text textUI;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +28,7 @@ public class Countdown : MonoBehaviour {
 		time -= Time.deltaTime;
 
 		if (time < 0f) {
+			poiManager.DealPoints ();
 			InitializeTime ();
 		}
 		PrintTime ();
@@ -37,6 +41,6 @@ public class Countdown : MonoBehaviour {
 		int seconds = (int)time % 60;
 		string text = minutes.ToString("00") + ":" + seconds.ToString("00");
 		textMesh.text = text;
-
+		textUI.text = text;
 	}
 }

@@ -14,9 +14,17 @@ public class MyNetworkManager : NetworkManager {
 		return nPlayers % numTeams;
 	}
 
+	public override void OnClientConnect (NetworkConnection conn)
+	{
+		base.OnClientConnect (conn);
+		Debug.Log ("OnClientConnect");
+	}
+		
+
 
 	public override void OnServerAddPlayer (NetworkConnection conn, short playerControllerId)
 	{
+		Debug.Log ("OnServerAddPlayer");
 		nPlayers++;
 		int team = GetTeam ();
 		if (myPlayerPrefab == null)
@@ -57,4 +65,11 @@ public class MyNetworkManager : NetworkManager {
 	public Material GetMaterial(int team){
 		return playerMaterials[team];
 	}
+
+	public override void OnClientDisconnect (NetworkConnection conn)
+	{
+		base.OnClientDisconnect (conn);
+		GetComponent<MatchMaker> ().Connect ();
+	}
+
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class DragonNetwork : NetworkBehaviour {
 	public DragonController dragonController;
@@ -9,11 +10,15 @@ public class DragonNetwork : NetworkBehaviour {
 	public CapsuleCollider healthCollider;
 	public Camera camera;
 	public SkinnedMeshRenderer renderer;
+	public Slider healthSlider;
+	private Text teamNameUI;
 
 	[SyncVar(hook="SetTeam")]
 	public int team=-1;
+
 	// Use this for initialization
 	void Start () {
+		teamNameUI = GameObject.FindGameObjectWithTag ("TeamNameUI").GetComponent<Text>();
 
 		if (team != -1) {
 			SetMaterial (team);
@@ -22,7 +27,9 @@ public class DragonNetwork : NetworkBehaviour {
 		if (!isLocalPlayer) {
 			Disable ();
 			return;
-		} 
+		} else {
+			Enable ();
+		}
 
 	}
 	
@@ -36,6 +43,7 @@ public class DragonNetwork : NetworkBehaviour {
 		dragoFire.enabled = false;
 		camera.gameObject.SetActive(false);
 		healthCollider.enabled = false;
+		healthSlider.gameObject.SetActive (true);
 	}
 
 	private void Enable(){
@@ -43,6 +51,7 @@ public class DragonNetwork : NetworkBehaviour {
 		dragoFire.enabled = true;
 		camera.gameObject.SetActive(true);
 		healthCollider.enabled = true;
+		healthSlider.gameObject.SetActive (false);
 	}
 		
 	public void SyncTeam(int team){
@@ -57,6 +66,7 @@ public class DragonNetwork : NetworkBehaviour {
 	}
 
 	private void SetName(int team){
+		teamNameUI.text = "Team " + team;
 		gameObject.name = "Player_team" + team;
 	}
 	private void SetMaterial(int team){
