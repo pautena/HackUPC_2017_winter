@@ -20,8 +20,6 @@ public class MyNetworkManager : NetworkManager {
 		Debug.Log ("OnClientConnect");
 	}
 		
-
-
 	public override void OnServerAddPlayer (NetworkConnection conn, short playerControllerId)
 	{
 		Debug.Log ("OnServerAddPlayer");

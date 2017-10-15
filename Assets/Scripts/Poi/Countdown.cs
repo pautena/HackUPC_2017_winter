@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class Countdown : MonoBehaviour {
+public class Countdown : NetworkBehaviour {
 
-	private TextMesh textMesh;
+	public TextMesh textMesh;
 	public float iterationSeconds=30f;
 	public float rotationVelocity=6f;
+
+	[SyncVar]
 	private float time;
 	public PoiManager poiManager;
 	public Text textUI;
 
 	// Use this for initialization
 	void Start () {
-		textMesh = GetComponent<TextMesh> ();
 		InitializeTime ();
 	}
 
@@ -25,17 +27,22 @@ public class Countdown : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		time -= Time.deltaTime;
+		DecTime ();
 
 		if (time < 0f) {
 			poiManager.DealPoints ();
 			InitializeTime ();
 		}
 		PrintTime ();
-		transform.Rotate (Vector3.up * Time.deltaTime * rotationVelocity);
+		textMesh.gameObject.transform.Rotate (Vector3.up * Time.deltaTime * rotationVelocity);
 
 	}
-
+		
+	[ServerCallback]
+	private  void DecTime(){
+		time -= Time.deltaTime;
+	}
+		
 	private void PrintTime(){
 		int minutes = (int)time/60;
 		int seconds = (int)time % 60;

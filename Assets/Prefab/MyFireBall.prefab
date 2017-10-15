@@ -241,6 +241,12 @@ MonoBehaviour:
   Force: 10
   Radius: 10
   explotion: {fileID: 1176434888710664, guid: 79f6f7e2880d04420a7750709dbe0981, type: 2}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 1048576
+  explosionRadius: 5
+  explosionForce: 1000
+  maxDamage: 30
 --- !u!135 &135935954252361342
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -251,7 +257,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198189088614414026
 ParticleSystem:
@@ -313,7 +319,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 466010037
+  randomSeed: 695835526
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3570,7 +3576,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -242154233
+  randomSeed: -1619342490
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6845,7 +6851,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -762750948
+  randomSeed: 2062618025
   InitialModule:
     serializedVersion: 3
     enabled: 1

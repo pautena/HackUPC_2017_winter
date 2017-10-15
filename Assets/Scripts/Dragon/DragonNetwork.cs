@@ -11,13 +11,17 @@ public class DragonNetwork : NetworkBehaviour {
 	public Camera camera;
 	public SkinnedMeshRenderer renderer;
 	public Slider healthSlider;
+	public float respawnDelay=3f;
+	public float respawnDelay2=2f;
 
 	[SyncVar(hook="SetTeam")]
 	public int team=-1;
 
+	private Animator animator;
+
 	// Use this for initialization
 	void Start () {
-		
+		animator = GetComponent<Animator> ();
 
 		if (team != -1) {
 			SetMaterial (team);
@@ -82,6 +86,24 @@ public class DragonNetwork : NetworkBehaviour {
 			.GetComponent<MyNetworkManager> ();
 		Material material = networkManager.GetMaterial (team);
 		renderer.material = material;
+	}
+		
+	public void Respawn(){
+		Debug.Log("Respawn");
+		Invoke ("DelayedRespawn1", respawnDelay);
+	}
+
+	private void DelayedRespawn1(){
+		MyNetworkManager networkManager = GameObject.FindGameObjectWithTag ("NetworkManager").GetComponent<MyNetworkManager>();
+		Transform spawnTransform = networkManager.GetStartPosition ();
+		transform.position = spawnTransform.position;
+		Invoke ("DelayedRespawn2", respawnDelay2);
+	}
+
+	private void DelayedRespawn2(){
+		DragonHealth dragonHealth = GetComponent<DragonHealth> ();
+		dragonHealth.Initialize();
+		animator.SetBool ("Stunned", true);
 	}
 		
 }

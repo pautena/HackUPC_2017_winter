@@ -1844,6 +1844,7 @@ MonoBehaviour:
   explosionStrength: 1000
   animator: {fileID: 95316930647811910}
   rb: {fileID: 54955803567061044}
+  died: 0
 --- !u!114 &114198093890812412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1947,6 +1948,8 @@ MonoBehaviour:
   camera: {fileID: 20428574085441354}
   renderer: {fileID: 137756726833040762}
   healthSlider: {fileID: 114198093890812412}
+  respawnDelay: 3
+  respawnDelay2: 4
   team: -1
 --- !u!114 &114429553198030846
 MonoBehaviour:

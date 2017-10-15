@@ -17,10 +17,18 @@ public class DragonHealth : NetworkBehaviour {
 	public Animator animator;
 	public Rigidbody rb;
 
+	[SyncVar]
+	public bool died=false;
+
 
 	void Start(){
-		health = startHealth;
+		Initialize ();
 		UpdateUI ();
+	}
+
+	public void Initialize(){
+		died = false;
+		health = startHealth;
 	}
 	
 	// Update is called once per frame
@@ -29,13 +37,16 @@ public class DragonHealth : NetworkBehaviour {
 	}
 
 	public void TakeDamage(float damage){
+		if (died) {
+			return;
+		}
 		health -= damage;
 
 
 
-		var died = CheckDie ();
+		var isDied = CheckDie ();
 
-		if (!died) {
+		if (!isDied) {
 			DamageAnimation ();
 		}
 		UpdateUI ();
@@ -50,7 +61,7 @@ public class DragonHealth : NetworkBehaviour {
 	}
 
 	private bool CheckDie(){
-		if (health < 0) {
+		if (health <= 0) {
 			health = 0.0f;
 			Die ();
 			return true;
@@ -75,7 +86,9 @@ public class DragonHealth : NetworkBehaviour {
 	}
 
 	public void Die(){
-		//TODO: respawn
+		died = true;
+		animator.SetTrigger ("Death");
+		GetComponent<DragonNetwork> ().Respawn ();
 	}
 
 	void OnTriggerEnter(Collider other) {
