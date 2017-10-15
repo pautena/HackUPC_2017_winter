@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class MyDragoFire : NetworkBehaviour {
-
-
 	private Animator anim;
 	private Transform cam;
 

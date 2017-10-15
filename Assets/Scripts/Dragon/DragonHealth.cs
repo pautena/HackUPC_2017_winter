@@ -16,6 +16,7 @@ public class DragonHealth : NetworkBehaviour {
 
 	public Animator animator;
 	public Rigidbody rb;
+	public AudioSource dragonsDeathAudio;
 
 	[SyncVar]
 	public bool died=false;
@@ -89,6 +90,7 @@ public class DragonHealth : NetworkBehaviour {
 		died = true;
 		animator.SetTrigger ("Death");
 		GetComponent<DragonNetwork> ().Respawn ();
+		dragonsDeathAudio.Play ();
 	}
 
 	void OnTriggerEnter(Collider other) {
