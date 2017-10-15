@@ -59,6 +59,7 @@ public class DragonHealth : NetworkBehaviour {
 	}
 
 	private void HookHealth(float newHealth){
+		Debug.Log ("HookHealth. health: " + health + ", newHealth: " + newHealth);
 		health = newHealth;
 		CheckDie ();
 		UpdateUI();

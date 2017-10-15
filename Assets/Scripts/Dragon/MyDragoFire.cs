@@ -103,6 +103,10 @@ public class MyDragoFire : NetworkBehaviour {
 	public void FireAttack(int type)
 	{
 
+		if (!isLocalPlayer) {
+			return;
+		}
+
 		//Fire ball Throw
 		if (FireBall && type == 1)
 		{

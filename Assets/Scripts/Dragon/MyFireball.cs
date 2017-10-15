@@ -32,7 +32,6 @@ public class MyFireball : NetworkBehaviour {
 
 	[ClientRpc]
 	private void RpcExplotion(){
-		Debug.Log ("RpcExplotion. client");
 		ShowExplosion ();
 	}
 
